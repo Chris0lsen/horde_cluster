@@ -1,7 +1,22 @@
+import Config
+
 config :libcluster,
   topologies: [
-    horde_cluster: [
-      strategy: Cluster.Strategy.Epmd,
-      config: [hosts: [:"ashbery@ashbery.local", :"bishop@bishop.local", :"creeley@creeley.local", :"dove@dove.local", :"emanuel@emanuel.local", :"ferlinghetti@ferlinghetti.local"]]
+    local_gossip: [
+      strategy: Cluster.Strategy.Gossip,
+      config: [
+        # The multicast address used for node discovery
+        multicast_addr: "230.1.1.251",
+        # The multicast port (must be the same across all nodes)
+        port: 45892,
+        # Interface address to bind to (use "0.0.0.0" for all interfaces)
+        if_addr: "0.0.0.0",
+        # Multicast TTL (Time To Live)
+        multicast_ttl: 1,
+        # Gossip interval in milliseconds
+        gossip_interval: 1_000,
+        # Number of failures before node is considered unreachable
+        max_convergence: 5
+      ]
     ]
   ]
