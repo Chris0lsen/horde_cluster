@@ -6,7 +6,7 @@ config :libcluster,
       strategy: Cluster.Strategy.Gossip,
       config: [
         # The multicast address used for node discovery
-        multicast_addr: "230.1.1.251",
+        multicast_addr: "239.1.1.251",
         # The multicast port (must be the same across all nodes)
         port: 45892,
         # Interface address to bind to (use "0.0.0.0" for all interfaces)
